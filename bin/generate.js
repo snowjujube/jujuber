@@ -76,9 +76,9 @@ loadArticleInfo().then((data) => {
 
 const createNewRoute = async (article) => {
 
-  let interval = setInterval(function () {
-    process.stdout.write('.')
-  }, 1);
+  // let interval = setInterval(function () {
+  //   process.stdout.write('.')
+  // }, 1);
   /*article: { title: '', category: '', content: '' }*/
   let {title, category, content, className, time} = article;
   console.log("正在生成：" + title);
@@ -117,6 +117,6 @@ const createNewRoute = async (article) => {
   await async_readdir(routePath);
   await async_mkdir(routePath);
   await async_writefile(routePath + routeName, moduleToImport + script);
-  clearInterval(interval);
-  console.log('');
+  // clearInterval(interval);
+  // console.log('');
 };

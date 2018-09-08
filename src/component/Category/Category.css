@@ -1,0 +1,12 @@
+.category {
+    position: relative;
+    width: 70%;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 750px){
+    .category {
+        display: block;
+        width: 100%;
+    }
+}

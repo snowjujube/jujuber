@@ -42,7 +42,7 @@ const makeAppRouter = async (tree) => {
     "      <Switch>\n" +
     "       " +
     routeArray.join('\n')
-    +"" +
+    + "" +
     "\n" +
     "        <Route path='/' exact render={()=>{\n" +
     "          return (\n" +
@@ -52,10 +52,39 @@ const makeAppRouter = async (tree) => {
     "            </Home>\n" +
     "          )\n" +
     "        }}></Route>" +
-    ""+
-
-
-    + " \n" +
+    "\n" +
+    "" +
+    "\n" +
+    "" +
+    "        {\n" +
+    "          categories.map(category => {\n" +
+    "            let filteredArray = json.filter(item => item.category === category);\n" +
+    "            return (\n" +
+    "              <Route exact path={'/category/' + category} render={() => {\n" +
+    "                return (\n" +
+    "                  <CategoryContent title={category} num={filteredArray.length}>\n" +
+    "                    {filteredArray.map(item => (\n" +
+    "                      <ArticleEntry title={item.title} category={item.category} time={item.time}\n" +
+    "                                    path={item.path} content={item.content}/>))}\n" +
+    "                  </CategoryContent>\n" +
+    "                )\n" +
+    "              }}></Route>\n" +
+    "            )\n" +
+    "          })\n" +
+    "        }" +
+    "" +
+    "\n" +
+    "<Route path='/category' render={()=>{\n" +
+    "       return     (<Category num='1'>\n" +
+    "              {categories.map(item => (<CategoryItem path={'/category/' + item} name={item}/>))}\n" +
+    "            </Category>)\n" +
+    "          }}></Route>" +
+    "" +
+    "\n" +
+    "" +
+    "<Route path='/about' component={AboutMe}></Route>" +
+    "" +
+    +" \n" +
     "      </Switch>\n" +
     "    )\n" +
     "  }\n" +
@@ -70,15 +99,30 @@ const makeAppRouter = async (tree) => {
     "\n" +
     "import Home from './component/Home/Home';\n" +
     "import ArticleEntry from './component/ArticleEntry/ArticleEntry'; \n" +
+    "import CategoryContent from './component/CategoryContent/CategoryContent';\n" +
+    "import AboutMe from './component/AboutMe/AboutMe'\n" +
+    "\n" +
+    "\n";
+
+
+  let categories = tree.map(item => "'" + item.name + "'");
+
+  let categoryRouteStr = "\n" +
+    "import Category from './component/Category/Category';\n" +
+    "import CategoryItem from './component/CategoryItem/CategoryItem';" +
+    "\n" +
+    "" +
+    "let categories = [" + categories + "] " +
     "\n"
 
-  await async_append_file('../src/appRouter.js', homeRouteStr + appendstr)
+
+  await async_append_file('../src/appRouter.js', homeRouteStr + categoryRouteStr + appendstr)
+
 
 }
 
 makeRouteTree().then(async (tree) => {
   await makeAppRouter(tree);
-  let title = ""
 });
 
 

@@ -168,7 +168,7 @@ server.on('connection', (socket) => {
 export default class JUJUBERWEBSOCKET1 extends Component{
   render() {
     return (
-      <Article title='WebSocket的学习' time='Sat, 08 Sep 2018 13:07:45 GMT' category='Node.js' content={html}/>
+      <Article title='WebSocket的学习' time='Sat, 08 Sep 2018 13:07:45 GMT' category='Nodeaa.js' content={html}/>
     )
   }
 }
