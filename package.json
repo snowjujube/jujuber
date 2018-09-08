@@ -44,7 +44,7 @@
     "build": "webpack --config ./config/webpack.prod.js",
     "start": "webpack-dev-server --open --config ./config/webpack.dev.js",
     "jujuber": "node ./bin/touch.js",
-    "generate": "node ./bin/generate.js"
+    "generate": " rm -rf ./src/ &&node ./bin/generate.js"
   },
   "author": "",
   "license": "ISC"
