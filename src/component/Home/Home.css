@@ -1,0 +1,13 @@
+
+.home-posts {
+    position: relative;
+    width: 70%;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 750px){
+    .home-posts {
+        display: block;
+        width: 100%;
+    }
+}
