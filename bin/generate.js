@@ -42,10 +42,10 @@ async function loadArticleInfo() {
 
   let sorted_details = markdown_detail_array.sort((article1, article2) => {
     if (article1.timestamp < article2.timestamp) {
-      return -1;
+      return 1;
     }
     else if (article1.timestamp > article2.timestamp) {
-      return 1;
+      return -1;
     }
     else return 0;
   });
